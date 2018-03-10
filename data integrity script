@@ -3,7 +3,7 @@
 #written by Ethan Gyori
 
 [string]$fDir = "c:\users\$env:username\desktop\folder1\*" #path from directory
-[string]$tDir = "c:\users\$env:username\desktop\folder2" #copy to directory
+[string]$tDir = "c:\users\$env:username\desktop\folder2" #path to directory
 copy-item -force -recurse -verbose $fDir -destination $tDir #copy from $fDir to $tDir
 [string]$a = "c:\users\$env:username\desktop\folder1\a.txt" #path of original hash
 [string]$b = "c:\users\$env:username\desktop\folder2\a.txt" #path of backup hash
