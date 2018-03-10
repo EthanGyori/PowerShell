@@ -1,0 +1,29 @@
+#Data Integrity Script
+#Written for Windows Powershell
+#written by Ethan Gyori
+
+[string]$fDir = "c:\users\$env:username\desktop\folder1\*" #path from directory
+[string]$tDir = "c:\users\$env:username\desktop\folder2" #copy to directory
+copy-item -force -recurse -verbose $fDir -destination $tDir #copy from $fDir to $tDir
+[string]$a = "c:\users\$env:username\desktop\folder1\a.txt" #path of original hash
+[string]$b = "c:\users\$env:username\desktop\folder2\a.txt" #path of backup hash
+[string]$baDir = "c:\users\$env:username\desktop\folder2\*" #backup from path
+[string]$bbDir = "c:\users\$env:username\desktop\folder1\" #backup to path
+[int]$i = 0
+while($i.equals(0))
+{
+    $aHash = (get-filehash $a -algorithm md5 | select Hash | format-list) | Out-String #get hash of orig
+    $bHash = (get-filehash $b -algorithm md5 | select Hash | format-list) | Out-String #hash of backup
+    if(!($aHash.equals($bHash)))
+    {
+        Get-Date -Format G
+        echo "integrity lost, recovering data"
+        copy-item -force -recurse -verbose $baDir -destination $bbDir #overwrite original with backup
+    }
+    else
+    {
+        Get-Date -Format G
+        echo "data is intact"
+    }
+    timeout /t 005 #wait 5 seconds
+}
