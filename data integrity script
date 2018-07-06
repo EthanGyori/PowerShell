@@ -1,29 +1,16 @@
-#Data Integrity Script
-#Written for Windows Powershell
-#written by Ethan Gyori
+$pA = "C:\path\to\original\"
+$pB = "c:\path\to\backup\"
+$tA = "a.log"
+$tB = "b.log"
 
-[string]$fDir = "c:\users\$env:username\desktop\folder1\*" #path from directory
-[string]$tDir = "c:\users\$env:username\desktop\folder2" #path to directory
-copy-item -force -recurse -verbose $fDir -destination $tDir #copy from $fDir to $tDir
-[string]$a = "c:\users\$env:username\desktop\folder1\a.txt" #path of original hash
-[string]$b = "c:\users\$env:username\desktop\folder2\a.txt" #path of backup hash
-[string]$baDir = "c:\users\$env:username\desktop\folder2\*" #backup from path
-[string]$bbDir = "c:\users\$env:username\desktop\folder1\" #backup to path
-[int]$i = 0
-while($i.equals(0))
-{
-    $aHash = (get-filehash $a -algorithm md5 | select Hash | format-list) | Out-String #get hash of orig
-    $bHash = (get-filehash $b -algorithm md5 | select Hash | format-list) | Out-String #hash of backup
-    if(!($aHash.equals($bHash)))
-    {
-        Get-Date -Format G
-        echo "integrity lost, recovering data"
-        copy-item -force -recurse -verbose $baDir -destination $bbDir #overwrite original with backup
-    }
-    else
-    {
-        Get-Date -Format G
-        echo "data is intact"
-    }
-    timeout /t 005 #wait 5 seconds
+sal -n "gfh" -va Get-FileHash
+
+$a = ls $pA | %{ac -Path "$pA$tA" -va (gfh -a MD5 -pa $_.F | select -exp "Hash")} #it says pasta lmao
+$b = ls $pB | %{ac -Path "$pA$tB" -va (gfh -a MD5 -pa $_.F | select -exp "Hash")}
+
+while($?){
+    if(!($a = $b)){
+    del $pA
+    cpi -Path $pB -D $pA}
+    sleep -s 30
 }
