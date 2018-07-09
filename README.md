@@ -1,4 +1,4 @@
-<p align="center"><h1>Powershell</h1></p>
+<p align="center">Powershell</p>
 ## Scripts and Short Programs Written by Ethan A. Gyori
 This repository contains windows powershell scripts I've written both in my freetime and for SEMO's CCDC team.  
 &nbsp;  
