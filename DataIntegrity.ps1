@@ -14,7 +14,7 @@ $pB = "C:\path\to\backup"
 
 function gfh{
     param($p)
-    ls $p | %{$c += (Get-FileHash -a MD5 -pa $_.FullName | select -exp 'Hash')[0..10]}
+    ls $p | %{$c += (Get-FileHash -a MD5 -pa $_.FullName | select -exp 'Hash')[0..10] -join ''}
     return $c 
 }
 
