@@ -21,4 +21,4 @@ if($s){rv s;$s = [char[]]([char]33..[char]47)}
 else{rv s; $s}
 if($e){rv e;$e = [char[]]([char]122..[char]126)}
 else{rv e; $e}
-($a+$n+$s+$e | sort {Get-Random})[0..$size] -join ''  
+(''+$a+$n+$s+$e | sort {Get-Random})[0..$size] -join ''  
