@@ -6,4 +6,4 @@ ls | %{(cat $_.name) -replace 'old string','new string'| sc $_.name}
 gci | ren -n {$_.name -replace 'old','new'}
 
 #import every task in cd into task scheduler where extension is .xml
-ls |?{$_.Extension -eq '.xml'} | %{schtasks /create /tn $_.BaseName /xml $_.FullName}
+ls | ?{$_.Extension -eq '.xml'} | %{schtasks /create /tn $_.BaseName /xml $_.FullName}
