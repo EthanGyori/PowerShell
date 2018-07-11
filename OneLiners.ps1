@@ -1,12 +1,17 @@
-<#--------------------
---|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|--
---|Good One-Liners|--
---|  Written by:  |--
---|  Ethan Gyori  |--
---| ~ ~ ~ ~ ~ ~ ~ |--
---|   e n j o y   |--
---|_______________|--
---------------------#>
+<#         /////////////////
+          /////////////////
+  |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|///////
+  |Good One-Liners|//////
+  |  Written by:  |/////
+  |  Ethan Gyori  |////
+  | ~ ~ ~ ~ ~ ~ ~ |///
+  |   e n j o y   |//
+  |_______________|/
+         |:|///
+         |:|//
+         |:|/
+          ‾
+#>
 
 #replace each occurance of string in file for each file in directory
 ls | %{(cat $_.name) -replace 'old string','new string'| sc $_.name}
