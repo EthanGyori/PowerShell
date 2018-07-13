@@ -1,5 +1,5 @@
 <#-------------------------
-Name: Password.ps1
+Name: Get-Password.ps1
 Author: Ethan Gyori
 Use:
   $size as integer
@@ -7,7 +7,7 @@ Use:
   $a -Alpha Chars
   $n -Numeric Chars
   $s -Special Chars
-  $e -Extra chars
+  $e -Extra Chars
   
 Last Modified: 07/10/2018
 -------------------------#>
