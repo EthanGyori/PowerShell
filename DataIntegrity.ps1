@@ -6,11 +6,14 @@ Use:
   $pB as backup path
   when $pA becomes corrupt,
     replace $pA with $pB
-Last Modified: 07/09/2018
+  sleep for 5 seconds
+    between iteration
+
+Last Modified: 07/20/2018
 -------------------------#>
 
 $pA = "C:\path\to\original"
-$pB = "C:\path\to\backup"
+$pB = "\\server\share\path\to\backup"
 
 function gfh{
     param($p)
