@@ -5,7 +5,7 @@ Use:
   shows newly ESTABLISHED
    connectoins within netstat 
    '-ano' arguments
-Last Modified: 07/09/2018
+Last Modified: 01/26/2019
 ------------------------------#>
 
 function gns{
@@ -13,6 +13,8 @@ return ((netstat -ano) | find "ESTABLISHED ")
 }
 
 $a = gns
+"Proto`tLocal`t`t`t`t`tForeign`t`t`t`t`tState`t`t`tPID"
+netstat -ano | find "ESTABLISHED "
 while($?){
     $c = @()
     $b = gns
