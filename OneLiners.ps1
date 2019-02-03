@@ -22,6 +22,9 @@ gci | ren -n {$_.name -replace 'old','new'}
 #import every task in cd into task scheduler where extension is .xml
 ls | ?{$_.Extension -eq '.xml'} | %{schtasks /create /tn $_.BaseName /xml $_.FullName}
 
+#shutdown logs w/ device,user, and timestamp
+Get-EventLog -lo system -n 1000 | ?{$_.eventid –eq ‘1074’} | Format-Table machinename, username, timegenerated –a
+
 #creates spinning graphic for loading or in process tasks
  $a = [enum]::getvalues([system.consolecolor]);while($?){'|','/','-','\' | %{Write-Host "$_`b" -n -f ($a[(Get-Random -ma $a.length)]);sleep -m 50}}
  
