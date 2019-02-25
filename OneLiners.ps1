@@ -24,6 +24,10 @@ ls | ?{$_.Extension -eq '.xml'} | %{schtasks /create /tn $_.BaseName /xml $_.Ful
 
 #shutdown logs w/ device,user, and timestamp
 Get-EventLog -lo system -n 1000 | ?{$_.eventid –eq ‘1074’} | Format-Table machinename, username, timegenerated –a
+         # 1074   shutdown
+         # 7001   login
+         # 7002   logout
+         # 4728, 4732, 4756         privlage escalation
 
 #creates spinning graphic for loading or in process tasks
  $a = [enum]::getvalues([system.consolecolor]);while($?){'|','/','-','\' | %{Write-Host "$_`b" -n -f ($a[(Get-Random -ma $a.length)]);sleep -m 50}}
