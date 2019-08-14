@@ -33,3 +33,6 @@ ls | ?{$_.Extension -eq '.xml'} | %{schtasks /create /tn $_.BaseName /xml $_.Ful
 #creates spinning graphic for loading or in process tasks
  $a = [enum]::getvalues([system.consolecolor]);while($?){'|','/','-','\' | %{Write-Host "$_`b" -n -f ($a[(Get-Random -ma $a.length)]);sleep -m 50}}
  
+netsh wlan connect name="SSID_Name"
+
+netsh wlan disconnect interface="Wi-FI"
